@@ -1,0 +1,11 @@
+<template>
+    <div if:false={hideNavbar}>
+        <ul class="slds-list_horizontal slds-no-print">
+            <template iterator:navitem={navItems}>
+                <li key={navitem.value.uniqueId} onclick={handleNavigation} data-page={navitem.value.pageAPI}>
+                    <span class="navbar-item">{navitem.value.label}</span>
+                </li>
+            </template>
+        </ul>
+    </div>
+</template> 

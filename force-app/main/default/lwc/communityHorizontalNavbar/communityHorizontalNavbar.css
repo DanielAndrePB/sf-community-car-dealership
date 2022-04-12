@@ -1,0 +1,13 @@
+.navbar-item{
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.navbar-first-item{
+    background-color: rgb(66, 150, 230);
+    color: rgb(255,255,255);
+}
+
+.navbar-item:hover{
+    background-color: #bec4c873;
+    color: rgb(0,0,0);
+}

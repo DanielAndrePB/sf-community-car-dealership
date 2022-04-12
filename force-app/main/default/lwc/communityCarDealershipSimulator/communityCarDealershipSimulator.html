@@ -1,0 +1,72 @@
+<template>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-combobox
+                label="Car"
+                options={carOptions}
+                onchange={handleCarSelection}
+                placeholder={carSelected.name}
+                name="name"
+                value={carSelected.price}
+                required
+            ></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input
+                label="Amount"
+                type="text"
+                name="amount"
+                value={carSelected.price}
+                disabled
+                required
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input
+                label="Down Payment"
+                type="number"
+                onchange={handleDownPaymentSelection}
+                name="downPayment"
+                step=".01"
+                formatter="currency"
+                required
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-combobox
+                label="Terms"
+                options={termOptions}
+                onchange={handleTermSelection}
+                placeholder={termSelected.label}
+                value={termSelected.value}
+                name="terms"
+                required
+            ></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <lightning-button
+                label="Calculate"
+                onclick={handleCalculateSimulation}
+            ></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item if:true={simulationTableRendered} size="12" padding="around-small">
+            <lightning-button
+                label="Download as PDF"
+                onclick={downloadPDF}
+                class="slds-m-right_small"
+            ></lightning-button>
+            <lightning-button
+                label="Download as CSV"
+                onclick={downloadCSV}
+            ></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item if:true={showSimulationTable} size="12" padding="around-small">
+            <c-community-car-dealership-simulator-table
+                down-payment={downPaymentSelected}
+                terms={termSelected.value}
+                price={carSelected.price}
+                ontablerendered={handleTableRendered}
+            ></c-community-car-dealership-simulator-table>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

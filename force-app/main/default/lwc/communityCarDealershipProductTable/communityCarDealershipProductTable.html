@@ -1,0 +1,13 @@
+<template>
+    <p if:true={showNoData} class="slds-align_absolute-center">
+        {noDataMessage}
+    </p>
+    <c-community-car-dealership-datatable
+        if:false={showNoData}
+        key-field="Id"
+        data={data}
+        columns={columns}
+        onrowaction={handleRowActions}
+        hide-checkbox-column
+    ></c-community-car-dealership-datatable>
+</template>

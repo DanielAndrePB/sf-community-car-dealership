@@ -1,0 +1,66 @@
+<template>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item size="12" padding="horizontal-small">
+            <lightning-input
+                label="Brand"
+                type="text"
+                onchange={handleInputChange}
+                name="brand"
+                value={inputValues.brand}
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="horizontal-small">
+            <lightning-input
+                label="Model"
+                type="text"
+                onchange={handleInputChange}
+                name="model"
+                value={inputValues.model}
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="horizontal-small">
+            <lightning-input
+                label="Choose an image"
+                type="file"
+                accept="image/*"
+                onchange={handleInputChange}
+                name="image"
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="horizontal-small" class="slds-var-p-bottom_small">
+            <lightning-pill
+                if:true={imageFileUploaded}
+                label={imageFilename}
+                variant="plain"
+                onremove={handleRemoveImage}
+            ></lightning-pill>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="horizontal-small">
+            <lightning-input
+                label="Color"
+                type="text"
+                onchange={handleInputChange}
+                name="color"
+                value={inputValues.color}
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="horizontal-small">
+            <lightning-input
+                label="Price"
+                type="text"
+                onchange={handleInputChange}
+                name="price"
+                value={inputValues.price}
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="horizontal-small">
+            <lightning-input
+                label="Active"
+                type="checkbox"
+                onchange={handleInputChange}
+                name="active"
+                checked={inputValues.active}
+            ></lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

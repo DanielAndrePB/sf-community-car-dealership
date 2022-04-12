@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-align_absolute-center carousel">
+        <lightning-carousel if:true={carouselLoaded} disable-auto-scroll>
+            <template for:each={carProductImages} for:item="carProductImage">
+                <lightning-carousel-image
+                    key={carProductImage.uniqueId}
+                    src={carProductImage.source}
+                    header={carProductImage.header}
+                    alternative-text={carProductImage.altText}
+                ></lightning-carousel-image>
+            </template>
+        </lightning-carousel>
+    </div>
+</template>

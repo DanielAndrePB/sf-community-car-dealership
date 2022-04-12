@@ -1,0 +1,78 @@
+<template>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item
+            if:false={isGuestUser}
+            size="12"
+            padding="around-small"
+        >
+            <lightning-button
+                class="slds-float_right"
+                label="New Car"
+                onclick={handleCreateRecord}
+            ></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" padding="around-small">
+            <lightning-input
+                label="Brand"
+                name="brandFilter"
+                onchange={handleFilterChange}
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" padding="around-small">
+            <lightning-input
+                label="Model"
+                name="modelFilter"
+                onchange={handleFilterChange}
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" padding="around-small">
+            <lightning-input
+                label="Color"
+                name="colorFilter"
+                onchange={handleFilterChange}
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <c-community-car-dealership-product-table
+                brand-filter={filters.brandFilter}
+                model-filter={filters.modelFilter}
+                color-filter={filters.colorFilter}
+                oneditrecord={handleEditRecord}
+            ></c-community-car-dealership-product-table>
+        </lightning-layout-item>
+    </lightning-layout>
+    <!--START New Car Modal-->
+    <template if:true={showNewCarModal}>
+        <c-modal
+            header={carModalHeader}
+            onclosemodal={handleCloseNewCarModal}
+            loading={modalLoading}
+        >
+            <c-community-car-dealership-car-form
+                slot="body"
+                car-record-id={carRecordId}
+                onloading={handleModalLoading}
+                oncreatedorupdated={handleCarCreatedOrUpdated}
+            ></c-community-car-dealership-car-form>
+            <div slot="footer">
+                <lightning-layout>
+                    <lightning-layout-item padding="horizontal-small">
+                        <lightning-button
+                            label="Cancel"
+                            brand="neutral"
+                            onclick={handleCloseNewCarModal}
+                        ></lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="horizontal-small">
+                        <lightning-button
+                            label={confirmationButtonLabel}
+                            variant="brand"
+                            onclick={handleConfirmation}
+                        ></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </c-modal>
+    </template>
+    <!--END New Car Modal-->
+</template>
